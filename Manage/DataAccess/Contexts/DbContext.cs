@@ -19,16 +19,16 @@ namespace DataAccess.Contexts
 
             string password1 = "12345678";
             var hashedPassword1 = PasswordHasher.Encrypt(password1);
-            Admin admin = new Admin("admin1", hashedPassword1);
+            Admin admin1 = new Admin("admin1", hashedPassword1);
             Admins.Add(admin1);
 
             string password2 = "87654321";
             var hashedPassword2 = PasswordHasher.Encrypt(password2);
-            Admin admin = new("admin2", hashedPassword2);
+            Admin admin2 = new("admin2", hashedPassword2);
             Admins.Add(admin2);
 
         }
-        public static List<Admin> Admins{get; set;}
+        public static List<Admin> Admins { get; set; }
         public static List<Student> Students { get; set; }
         public static List<Group> Groups { get; set; }
     }

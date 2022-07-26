@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.Base.Implementations
 {
-    internal class AdminRepository : IRepository<Admin>
+    public class AdminRepository : IRepository<Admin>
     {
         private static int id;
 
@@ -17,44 +17,85 @@ namespace DataAccess.Repositories.Base.Implementations
         {
             id++;
             entity.Id = id;
+            try
+            {
+                DbContext.Admins.Add(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+
             DbContext.Admins.Add(entity);
             return entity;
         }
         public void Delete(Admin entity)
         {
+            try
+            {
+                DbContext.Admins.Remove(entity);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("something went wrong");
+            }
             DbContext.Admins.Remove(entity);
         }
 
         public void Update(Admin entity)
         {
-            var admin = DbContext.Groups.Find(g => g.Id == entity.Id);
-            if (admin != null)
+            try
             {
-                admin.Username = entity.Username;
-                admin.Password = entity.Password;
+                var admin = DbContext.Groups.Find(g => g.Id == entity.Id);
+                if (admin != null)
+                {
+                    admin.Username = entity.Username;
+                    admin.Password = entity.Password;
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("something went wrong");
+            }
+
         }
         public Admin Get(Predicate<Admin> filter = null)
         {
-            if (filter == null)
+            try
             {
-                return DbContext.Admins[0];
+                if (filter == null)
+                {
+                    return DbContext.Admins[0];
+                }
+                else
+                {
+                    return DbContext.Admins.Find(filter);
+                }
             }
-            else
+            catch (Exception )
             {
-                return DbContext.Admins.Find(filter);
+                Console.WriteLine("Something went wrong");
+                return null;
             }
         }
 
         public List<Admin> GetAll(Predicate<Admin> filter = null)
         {
-            if (filter == null)
+            try
             {
-                return DbContext.Admins;
+                if (filter == null)
+                {
+                    return DbContext.Admins;
+                }
+                else
+                {
+                    return DbContext.Admins.FindAll(filter);
+                }
             }
-            else
+            catch (Exception)
             {
-                return DbContext.Admins.FindAll(filter);
+                Console.WriteLine("Something went wrong");
+                return null ;
             }
         }
     }

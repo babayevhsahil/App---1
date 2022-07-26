@@ -16,8 +16,8 @@ namespace Manage
             AdminController _adminController = new AdminController();
 
 
-            Authentication: var admin = _adminController.Authenticate();
-           
+        Authentication: var admin = _adminController.Authenticate();
+
 
             if (admin != null)
             {
@@ -25,9 +25,8 @@ namespace Manage
 
                 Console.WriteLine("*************");
 
-            }
-            else
-            {
+
+
                 while (true)
                 {
 
@@ -103,8 +102,9 @@ namespace Manage
 
 
                 }
-
             }
+
+
             else
             {
                 ConsoleHelper.WriteTextWithColor(ConsoleColor.Red, "Admin Username or Password is incorrected");
@@ -112,6 +112,6 @@ namespace Manage
             }
 
         }
-          
+
     }
 }

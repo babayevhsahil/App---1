@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Entities
 {
-    public class Admin
+    public class Admin : IEntity
     {
         public int Id { get; set; }
 
@@ -16,7 +17,7 @@ namespace Core.Entities
 
         public Admin(string username, string password)
         {
-            
+
             Username = username;
             Password = password;
         }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Helpers;
 using DataAccess.Repositories.Implementations;
+using DataAccess.Repositories.Base.Implementations;
 
 namespace Manage.Controllers
 {

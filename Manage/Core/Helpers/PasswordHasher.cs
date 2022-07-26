@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.Helpers
 {
-    public  class PasswordHasher
+    public static class PasswordHasher
     {
-        public string Encrypt(string password)
+        public static string Encrypt(string password)
         {
             byte[] encData_byte = new byte[password.Length];
             encData_byte = Encoding.UTF8.GetBytes(password);
